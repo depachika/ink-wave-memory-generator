@@ -5,7 +5,7 @@
 
 export const frames = [
   // 例: { fileName: "congratulations_frame.png", label: "おめでとう！" },
-  
+
   { 
     fileName: "congratulations_frame.png",
     label: "おめでとうフレーム"
@@ -13,6 +13,10 @@ export const frames = [
   {
     fileName: "oil_painting_aesthetic_frame.png",
     label: "麗美なフレーム"
+  },
+  {
+    fileName: "letter_box_inkwave.png",
+    label: "映画風フレーム"
   },
 ];
 
