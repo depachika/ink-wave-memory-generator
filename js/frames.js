@@ -5,6 +5,15 @@
 
 export const frames = [
   // 例: { fileName: "congratulations_frame.png", label: "おめでとう！" },
+  
+  { 
+    fileName: "congratulations_frame.png",
+    label: "おめでとうフレーム"
+  },
+  {
+    fileName: "oil_painting_aesthetic_frame.png",
+    label: "麗美なフレーム"
+  },
 ];
 
 export const frameLabels = {
