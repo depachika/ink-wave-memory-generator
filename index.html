@@ -15,19 +15,32 @@
     <header class="page-header">
       <p class="eyebrow">INK WAVE</p>
       <h1>記念写真ジェネレーター</h1>
-      <p class="intro">お気に入りの写真とフレームを選んで、記念画像を作ろう！</p>
+      <p class="intro">お気に入りの撮影画像とフレームを選んで、記念画像を作ろう！</p>
     </header>
 
+
     <section class="preview-section" aria-labelledby="preview-heading">
-      <h2 id="preview-heading">完成イメージ</h2>
+      <div class="preview-header">
+        <h2 id="preview-heading">完成イメージ</h2>
+        <button id="preview-pin" class="preview-pin" type="button" aria-pressed="false" aria-label="プレビューを固定する">
+          <span aria-hidden="true">📌</span>
+          <span id="preview-pin-label">固定する</span>
+        </button>
+      </div>
+    
       <div class="preview-wrap">
         <canvas id="preview" width="1920" height="1080" aria-label="完成画像のプレビュー"></canvas>
         <div id="preview-placeholder" class="preview-placeholder">
-          <span>まずは写真を選択しよう</span>
+          <span>まずは画像を選択しよう</span>
         </div>
       </div>
-      <p id="status" class="status" role="status" aria-live="polite">画像を選ぶとプレビューが表示されます。</p>
+    
+      <p id="status" class="status" role="status" aria-live="polite">
+        画像を選ぶとプレビューが表示されます。
+      </p>
     </section>
+
+
 
     <section class="control-section step-section" aria-labelledby="photo-heading">
       <details id="photo-section" class="step-details" open>
@@ -96,11 +109,11 @@
               <div class="slider-heading">
                 <label for="logo-size">大きさ</label>
                 <div class="number-input-wrap">
-                  <input id="logo-size-number" type="number" min="5" max="70" step="0.1" value="30" inputmode="decimal" aria-label="大きさの数値">
+                  <input id="logo-size-number" type="number" min="5" max="90" step="0.1" value="30" inputmode="decimal" aria-label="大きさの数値">
                   <span>%</span>
                 </div>
               </div>
-              <input id="logo-size" type="range" min="5" max="70" step="0.1" value="30">
+              <input id="logo-size" type="range" min="5" max="90" step="0.1" value="30">
               <div class="range-labels"><span>小</span><span>大</span></div>
             </div>
 
@@ -122,11 +135,11 @@
                 <div class="slider-heading">
                   <label for="logo-outline-width">太さ</label>
                   <div class="number-input-wrap">
-                    <input id="logo-outline-width-number" type="number" min="0" max="30" step="0.1" value="15" inputmode="decimal" aria-label="縁取りの太さ">
+                    <input id="logo-outline-width-number" type="number" min="0" max="50" step="0.1" value="15" inputmode="decimal" aria-label="縁取りの太さ">
                     <span>px</span>
                   </div>
                 </div>
-                <input id="logo-outline-width" type="range" min="0" max="30" step="0.1" value="15">
+                <input id="logo-outline-width" type="range" min="0" max="50" step="0.1" value="15">
                 <div class="range-labels"><span>0 (縁取りなし)</span><span>太い</span></div>
               </div>
 
@@ -161,7 +174,7 @@
     </section>
 
     <footer class="page-footer">
-      <p>写真は外部サーバーに送信されず、このブラウザー内で処理されます。</p>
+      <p>画像は外部サーバーに送信されず、このブラウザー内で処理されます。</p>
     </footer>
   </main>
 </body>
