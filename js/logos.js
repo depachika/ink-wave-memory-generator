@@ -12,4 +12,20 @@ export const logos = [
   //   size: 18,
   //   rotation: 0,
   // },
+  {
+    fileName: "IW_logo_black_v.png",
+    label: "INK WAVE ロゴ (通常版)",
+    x: 78,
+    y: 82,
+    size: 18,
+    rotation: 0,
+  },
+  {
+    fileName: "IW_logo_white_v.png",
+    label: "INK WAVE ロゴ (白色版)",
+    x: 78,
+    y: 82,
+    size: 18,
+    rotation: 0,
+  },
 ];
