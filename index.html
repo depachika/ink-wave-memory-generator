@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#003399">
+  <title>INK WAVE 記念画像ジェネレーター</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script type="module" src="./js/app.js"></script>
+</head>
+
+<body>
+  <main class="app">
+    <header class="page-header">
+      <p class="eyebrow">INK WAVE</p>
+      <h1>記念写真ジェネレーター</h1>
+      <p class="intro">お気に入りの写真とフレームを選んで、記念画像を作ろう！</p>
+    </header>
+
+    <section class="preview-section" aria-labelledby="preview-heading">
+      <h2 id="preview-heading">完成イメージ</h2>
+      <div class="preview-wrap">
+        <canvas id="preview" width="1920" height="1080" aria-label="完成画像のプレビュー"></canvas>
+        <div id="preview-placeholder" class="preview-placeholder">
+          <span>まずは写真を選択しよう</span>
+        </div>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite">画像を選ぶとプレビューが表示されます。</p>
+    </section>
+
+    <section class="control-section step-section" aria-labelledby="photo-heading">
+      <details id="photo-section" class="step-details" open>
+        <summary>
+          <h2 id="photo-heading">写真を選ぶ</h2>
+        </summary>
+        <div class="step-content">
+          <label class="primary-button file-button" for="photo-input">写真を選択</label>
+          <input id="photo-input" class="visually-hidden" type="file" accept="image/*">
+          <p class="help">ゲーム画面のスクリーンショットなど、画像を選択してください。横長の画像は16:9に自動で切り取られます。</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="control-section step-section" aria-labelledby="frame-heading">
+      <details id="frame-section" class="step-details">
+        <summary>
+          <h2 id="frame-heading">フレームを選ぶ</h2>
+        </summary>
+        <div class="step-content">
+          <div id="frame-list" class="choice-list">
+            <p class="muted">フレームを読み込み中…</p>
+          </div>
+          <!-- フレーム画像は assets/frames/ に追加し、js/frames.js に登録する -->
+        </div>
+      </details>
+    </section>
+
+    <section class="control-section step-section" aria-labelledby="logo-heading">
+      <details id="logo-section" class="step-details">
+        <summary>
+          <h2 id="logo-heading">INK WAVE ロゴを配置する</h2>
+        </summary>
+        <div class="step-content">
+          <label class="field-label" for="logo-input">ロゴ素材</label>
+          <select id="logo-input" class="select-control">
+            <option value="">ロゴを使用しない</option>
+          </select>
+
+          <div id="logo-controls" class="logo-controls" hidden>
+            <div class="slider-field">
+              <div class="slider-heading">
+                <label for="logo-x">横位置</label>
+                <div class="number-input-wrap">
+                  <input id="logo-x-number" type="number" min="0" max="100" step="0.1" value="12" inputmode="decimal" aria-label="横位置の数値">
+                  <span>%</span>
+                </div>
+              </div>
+              <input id="logo-x" type="range" min="0" max="100" step="0.1" value="12">
+              <div class="range-labels"><span>左</span><span>右</span></div>
+            </div>
+
+            <div class="slider-field">
+              <div class="slider-heading">
+                <label for="logo-y">縦位置</label>
+                <div class="number-input-wrap">
+                  <input id="logo-y-number" type="number" min="0" max="100" step="0.1" value="15" inputmode="decimal" aria-label="縦位置の数値">
+                  <span>%</span>
+                </div>
+              </div>
+              <input id="logo-y" type="range" min="0" max="100" step="0.1" value="15">
+              <div class="range-labels"><span>上</span><span>下</span></div>
+            </div>
+
+            <div class="slider-field">
+              <div class="slider-heading">
+                <label for="logo-size">大きさ</label>
+                <div class="number-input-wrap">
+                  <input id="logo-size-number" type="number" min="5" max="70" step="0.1" value="30" inputmode="decimal" aria-label="大きさの数値">
+                  <span>%</span>
+                </div>
+              </div>
+              <input id="logo-size" type="range" min="5" max="70" step="0.1" value="30">
+              <div class="range-labels"><span>小</span><span>大</span></div>
+            </div>
+
+            <div class="slider-field">
+              <div class="slider-heading">
+                <label for="logo-rotation">回転角</label>
+                <div class="number-input-wrap">
+                  <input id="logo-rotation-number" type="number" min="-180" max="180" step="1" value="0" inputmode="numeric" aria-label="回転角の数値">
+                  <span>°</span>
+                </div>
+              </div>
+              <input id="logo-rotation" type="range" min="-180" max="180" step="1" value="0">
+              <div class="range-labels"><span>-180°</span><span>180°</span></div>
+            </div>
+
+            <div class="outline-section">
+              <h3>縁取り</h3>
+              <div class="slider-field">
+                <div class="slider-heading">
+                  <label for="logo-outline-width">太さ</label>
+                  <div class="number-input-wrap">
+                    <input id="logo-outline-width-number" type="number" min="0" max="30" step="0.1" value="15" inputmode="decimal" aria-label="縁取りの太さ">
+                    <span>px</span>
+                  </div>
+                </div>
+                <input id="logo-outline-width" type="range" min="0" max="30" step="0.1" value="15">
+                <div class="range-labels"><span>0 (縁取りなし)</span><span>太い</span></div>
+              </div>
+
+              <div class="color-field">
+                <label class="field-label">縁取りの色</label>
+                <div id="outline-color-presets" class="color-presets" aria-label="縁取り色のプリセット">
+                  <button class="color-swatch" type="button" data-color="#FFFFFF" aria-label="白" title="白"></button>
+                  <button class="color-swatch" type="button" data-color="#000000" aria-label="黒" title="黒"></button>
+                  <button class="color-swatch" type="button" data-color="#003399" aria-label="INK WAVEブルー" title="INK WAVEブルー"></button>
+                  <button class="color-swatch" type="button" data-color="#E60033" aria-label="赤" title="赤"></button>
+                  <button class="color-swatch" type="button" data-color="#FFCC00" aria-label="黄" title="黄"></button>
+                  <button class="color-swatch" type="button" data-color="#00A86B" aria-label="緑" title="緑"></button>
+                </div>
+                <div class="color-code-row">
+                  <label for="logo-outline-color">色コード</label>
+                  <input id="logo-outline-color" type="text" value="#FFFFFF" maxlength="7" pattern="#[0-9A-Fa-f]{6}" autocomplete="off" spellcheck="false" aria-describedby="logo-outline-color-help">
+                </div>
+                <p id="logo-outline-color-help" class="help">形式は #RRGGBB。色ボタンを押すか、色コードを直接入力してください。</p>
+                <p id="logo-outline-color-error" class="field-error" role="status" hidden>色コードは #RRGGBB の形式で入力してください。</p>
+              </div>
+            </div>
+
+            <button id="reset-logo" class="secondary-button" type="button">ロゴ設定を初期値に戻す</button>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <section class="actions" aria-label="画像の操作">
+      <button id="download" class="primary-button download-button" type="button" disabled>画像を保存（PNG）</button>
+      <button id="reset-all" class="secondary-button reset-all-button" type="button">最初からやり直す</button>
+    </section>
+
+    <footer class="page-footer">
+      <p>写真は外部サーバーに送信されず、このブラウザー内で処理されます。</p>
+    </footer>
+  </main>
+</body>
+
+</html>
