@@ -1,0 +1,74 @@
+
+/* responsive.css には .actions の方向やボタンの高さを再指定するルールを残さない。 */
+/* ==================================================
+   画面幅が広い場合
+   ================================================== */
+
+@media (min-width: 560px) {
+
+  /* ページ上部の余白 */
+  .app {
+    padding-top: 28px;
+  }
+
+  /* 各セクションの内側の余白 */
+  .preview-section,
+  .control-section,
+  .actions-section {
+    padding: 22px;
+  }
+
+  /* フレーム一覧を3列にする */
+  .choice-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ==================================================
+   スマートフォン向けの調整
+   ================================================== */
+
+@media (max-width: 600px) {
+
+  /* プレビュー固定ボタンをコンパクトにする */
+  .preview-pin {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
+
+/* ==================================================
+   特に画面幅が狭い場合
+   ================================================== */
+
+@media (max-width: 380px) {
+
+  /* 数値入力欄を縮小する */
+  .number-input-wrap input[type="number"] {
+    width: 78px;
+  }
+
+  /* 色プリセットの間隔を狭める */
+  .color-presets {
+    gap: 9px;
+  }
+}
+
+/* ==================================================
+   アニメーション設定
+   ================================================== */
+
+/* OS側で動きを減らす設定が無効な場合のみアニメーションする */
+@media (prefers-reduced-motion: no-preference) {
+
+  .choice-card,
+  .primary-button,
+  .secondary-button,
+  .step-details>summary::after,
+  .color-swatch {
+    transition:
+      border-color 120ms ease,
+      background-color 120ms ease,
+      box-shadow 120ms ease;
+  }
+}

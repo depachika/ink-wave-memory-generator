@@ -1,0 +1,50 @@
+[
+  {
+    "fileName": "letter_box_inkwave.png",
+    "label": "映画風フレーム",
+    "output": {
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  {
+    "fileName": "congratulations_frame.png",
+    "label": "おめでとうフレーム",
+    "output": {
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  {
+    "fileName": "oil_painting_aesthetic_frame.png",
+    "label": "美麗なフレーム",
+    "output": {
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  {
+    "fileName": "leaf_frame.png",
+    "label": "リーフなフレーム",
+    "output": {
+      "width": 1080,
+      "height": 1080
+    }
+  },
+  {
+    "fileName": "classy_frame.png",
+    "label": "高級感のあるフレーム",
+    "output": {
+      "width": 1080,
+      "height": 1080
+    }
+  },
+  {
+    "fileName": "stained_glass.png",
+    "label": "ステングラス風のフレーム",
+    "output": {
+      "width": 1080,
+      "height": 1920
+    }
+  }
+]

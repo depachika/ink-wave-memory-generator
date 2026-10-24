@@ -1,0 +1,187 @@
+
+/* ==================================================
+   ページ全体の基本設定
+   ================================================== */
+
+:root {
+  color-scheme: light;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #172033;
+  background: #003399;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #003399;
+}
+
+/* フォーム要素のフォントを統一する */
+button,
+input,
+select {
+  font: inherit;
+}
+
+/* タッチ操作時の不要な遅延を抑える */
+button,
+select,
+input[type="range"],
+.file-button {
+  touch-action: manipulation;
+}
+
+/* ページ本体の幅と余白 */
+.app {
+  width: min(100% - 24px, 760px);
+  margin: 0 auto;
+  padding: 20px 0 32px;
+  counter-reset: steps;
+}
+
+/* ==================================================
+   ページ見出しと共通の文字スタイル
+   ================================================== */
+
+.page-header {
+  padding: 8px 4px 18px;
+  color: #fff;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.45rem, 5vw, 2rem);
+  line-height: 1.25;
+}
+
+.intro {
+  margin: 8px 0 0;
+  color: #e0eaff;
+  line-height: 1.6;
+}
+
+h2 {
+  margin: 0 0 14px;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+/* 補足説明や控えめなテキスト */
+.placeholder-sub,
+.help,
+.muted,
+.page-footer {
+  color: #667085;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.status {
+  margin: 10px 0 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.help {
+  margin: 10px 0 0;
+}
+
+/* ==================================================
+   セクション共通のカードデザイン
+   ================================================== */
+
+.preview-section,
+.control-section,
+.actions-section {
+  margin-top: 14px;
+  padding: 18px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 12%);
+}
+
+/* ==================================================
+   共通ボタン
+   ================================================== */
+
+.primary-button,
+.secondary-button,
+.file-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  min-height: 48px;
+  margin-inline: auto;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 10px;
+  font-weight: 750;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.primary-button {
+  color: #fff;
+  background: #1649b8;
+}
+
+.primary-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.secondary-button {
+  color: #173b88;
+  border: 1px solid #b9c8e8;
+  background: #f5f8ff;
+}
+
+/* キーボード操作時のフォーカス表示 */
+.primary-button:focus-visible,
+.secondary-button:focus-visible,
+.select-control:focus-visible,
+input:focus-visible,
+.file-button:focus-visible,
+.step-details summary:focus-visible,
+.color-swatch:focus-visible {
+  outline: 3px solid #f3b51b;
+  outline-offset: 3px;
+}
+
+
+/* 視覚的には隠すが、操作対象として残す要素 */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* インラインコード */
+code {
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: #edf1f8;
+  font-size: 0.9em;
+}

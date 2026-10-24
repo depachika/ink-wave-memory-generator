@@ -1,0 +1,561 @@
+
+/* ==================================================
+   設定項目のアコーディオン
+   ================================================== */
+
+.step-section {
+  counter-increment: steps;
+}
+
+.step-details>summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.step-details>summary::-webkit-details-marker {
+  display: none;
+}
+
+/* 開閉アイコンの円形背景 */
+.step-details>summary::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #edf1f8;
+}
+
+/* 開閉アイコン */
+.step-details>summary::after {
+  content: "+";
+  position: relative;
+  z-index: 1;
+  display: grid;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  color: #1649b8;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+/* 開いているときの表示 */
+.step-details[open]>summary::before {
+  background: #dce6fa;
+}
+
+.step-details[open]>summary::after {
+  content: "−";
+}
+
+.step-details>summary h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* 設定項目の番号 */
+.step-section .step-details>summary h2::before {
+  content: counter(steps) ". ";
+}
+
+/* アコーディオンの内容 */
+.step-content {
+  padding-top: 18px;
+  padding-right: 18px;  /* スマホを想定して右端を空ける。誤タップ防止のため */
+}
+
+.step-details[open]>summary,
+.step-details:not([open])>summary {
+  margin-bottom: 0;
+}
+
+
+
+/* ==================================================
+   画像の選択
+   ================================================== */
+
+/* 画像選択ボタン */
+.file-button {
+  display: flex;
+  width: 80%;
+  margin-inline: auto;
+}
+
+
+/* ==================================================
+   フレーム一覧
+   ================================================== */
+
+.choice-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.choice-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  padding: 8px;
+  border: 2px solid #d8deea;
+  border-radius: 12px;
+  background: #fff;
+  color: #172033;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* 「フレームなし」専用 */
+.choice-card-none {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.choice-card-none::before {
+  content: "";
+  display: block;
+  flex-shrink: 0;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+/* 選択中のフレーム */
+.choice-card[aria-pressed="true"] {
+  border-color: #1649b8;
+  box-shadow: 0 0 0 2px rgb(22 73 184 / 13%);
+}
+
+/* フレーム画像とプレースホルダー */
+.choice-card img,
+.frame-placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #edf1f8;
+}
+
+.choice-card span {
+  overflow-wrap: anywhere;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+
+
+
+
+.step-section hr.section-items-separator {
+  border: none;
+  /* ブラウザデフォルトの立体的な枠線をリセット */
+  height: 1px;
+  /* 線の太さ（高さ）を指定 */
+  background-color: #DDDDDD;
+  /* 線の色を指定 */
+  margin: 20px 0;
+  /* 上下の余白を指定 */
+
+
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+
+
+
+
+
+/* 項目名と個別リセットボタン */
+.slider-label-group {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+}
+
+/* 項目単位のリセットボタン */
+.field-reset-button {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid #b9c3d5;
+  border-radius: 8px;
+  background: #fff;
+  color: #1649b8;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* キーボード操作時にもフォーカスを認識できるようにする */
+.field-reset-button:focus-visible {
+  outline: 2px solid #1649b8;
+  outline-offset: 2px;
+}
+
+/* スライダーと目盛りをまとめて中央寄せする */
+.range-control {
+  width: 80%;
+  max-width: 32rem;
+  margin-inline: auto;
+}
+
+/* 親要素の幅に合わせてスライダーを表示する */
+.range-control input[type="range"] {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 32px;
+  margin: 8px 0 0;
+  accent-color: #1649b8;
+  cursor: pointer;
+}
+
+/* 左右の目盛りもスライダーの幅に合わせる */
+.range-control .range-labels {
+  display: flex;
+  justify-content: space-between;
+  color: #667085;
+  font-size: 0.78rem;
+}
+
+
+
+
+
+
+
+/* ==================================================
+   ロゴの選択
+   ================================================== */
+
+.field-label,
+.slider-heading label {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.select-control {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 8px;
+  padding: 10px 12px;
+  border: 1px solid #b9c3d5;
+  border-radius: 10px;
+  color: #172033;
+  background: #fff;
+}
+
+/* ロゴ設定全体 */
+.logo-controls {
+  display: grid;
+  gap: 22px;
+  margin-top: 22px;
+}
+
+.logo-controls[hidden] {
+  display: none;
+}
+
+
+
+
+/* ==================================================
+   写真位置調整
+   ================================================== */
+
+/* 写真位置調整エリア */
+.photo-position-controls {
+  display: grid;
+  gap: 22px;
+  margin-top: 22px;
+
+  /* fieldset標準の外観をリセットする */
+  min-width: 0;
+  padding: 0;
+  border: none;
+}
+
+/* 写真位置調整が無効な場合 */
+.photo-position-controls:disabled {
+  opacity: 0.55;
+}
+
+
+
+.photo-position-controls h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.photo-position-controls .help {
+  margin: -12px 0 0;
+  color: #667085;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+
+
+
+
+
+
+/* ==================================================
+   ロゴの位置・大きさ・回転
+   ================================================== */
+
+.slider-field {
+  min-width: 0;
+}
+
+.slider-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.number-input-wrap {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 5px;
+  color: #344054;
+  font-size: 0.9rem;
+}
+
+.number-input-wrap input[type="number"] {
+  width: 92px;
+  min-height: 38px;
+  padding: 6px 8px;
+  border: 1px solid #b9c3d5;
+  border-radius: 8px;
+  color: #172033;
+  background: #fff;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+input[type="range"] {
+  display: block;
+  width: 100%;
+  min-height: 32px;
+  margin: 8px 0 0;
+  accent-color: #1649b8;
+  cursor: pointer;
+}
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  color: #667085;
+  font-size: 0.78rem;
+}
+
+
+/* ==================================================
+   ロゴの縁取り設定
+   ================================================== */
+
+/* 縁取り設定全体 */
+.outline-section {
+  display: grid;
+  gap: 20px;
+  /* padding-top: 24px; */
+}
+
+/* 縁取りの見出し */
+.outline-section h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* 縁取りの個別設定を子項目として表示 */
+.outline-section>.slider-field,
+.outline-section>.color-field    /* 縁取り設定の中にある「縁取りの色」 */
+{
+  position: relative;
+  margin-left: 12px;
+  padding-left: 14px;
+}
+
+/* 子項目を示す薄い縦線 */
+.outline-section>.slider-field::before,
+.outline-section>.color-field::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: #d5dce8;
+}
+
+/* 各子項目の開始位置を示す横線 */
+.outline-section>.slider-field::after,
+.outline-section>.color-field::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 8px;
+  height: 2px;
+  background: #d5dce8;
+}
+
+/* 色設定の内部の要素同士の配置と間隔レイアウト */
+/* 色設定全体 */
+.color-field {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+/* 色の見出しと色コード入力欄 */
+.color-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+}
+
+/* 色コード入力欄のラベルと入力欄 */
+.color-code-row {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 色コードのラベル */
+.color-code-row label {
+  flex: 0 0 auto;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* 色コードの入力欄 */
+.color-code-row input {
+  box-sizing: border-box;
+  width: 100px;
+  min-width: 0;
+  min-height: 38px;
+  padding: 6px 8px;
+  border: 1px solid #b9c3d5;
+  border-radius: 8px;
+  color: #172033;
+  background: #fff;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+/* 色コードの入力エラー */
+.color-code-row input[aria-invalid="true"] {
+  border-color: #c62828;
+  background: #fff7f7;
+}
+
+/* 色のプリセット */
+.color-presets {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* 入力形式の説明 */
+.color-field .help {
+  margin: 0;
+  color: #667085;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* 入力エラー */
+.field-error {
+  margin: 0;
+  color: #b42318;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.field-error[hidden] {
+  display: none;
+}
+
+
+
+/* 色のプリセット */
+.color-presets {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.color-swatch {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 2px solid #c5ccda;
+  border-radius: 50%;
+  background: var(--swatch-color, #fff);
+  cursor: pointer;
+}
+
+.color-swatch[data-color="#FFFFFF"] {
+  --swatch-color: #ffffff;
+}
+
+.color-swatch[data-color="#000000"] {
+  --swatch-color: #000000;
+}
+
+.color-swatch[data-color="#003399"] {
+  --swatch-color: #003399;
+}
+
+.color-swatch[data-color="#E60033"] {
+  --swatch-color: #e60033;
+}
+
+.color-swatch[data-color="#FFCC00"] {
+  --swatch-color: #ffcc00;
+}
+
+.color-swatch[data-color="#00A86B"] {
+  --swatch-color: #00a86b;
+}
+
+/* 選択中の色 */
+.color-swatch[aria-pressed="true"] {
+  border: 3px solid #6b9cff;
+  box-shadow: 0 0 0 2px #dce6fa;
+}

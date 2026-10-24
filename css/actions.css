@@ -1,0 +1,48 @@
+
+/* 保存・共有ボタンの配置、説明文、リセットボタン、フッターなど、固有のスタイルを設定する。 */
+
+/* 画像の保存・共有ボタン */
+.export-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.export-section>button {
+  flex: 0 0 auto;
+  min-height: 48px;
+}
+
+/* 共有方法の説明 */
+.share-help {
+  width: 80%;
+  margin: 0 auto;
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ページのリセット */
+.page-reset {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 1rem;
+}
+
+.reset-all-button {
+  min-height: 40px;
+  padding: 8px 14px;
+  font-size: 0.88rem;
+}
+
+/* フッター */
+.page-footer {
+  padding: 8px 6px 0;
+  color: #e0eaff;
+  text-align: center;
+}
+
+.page-footer p {
+  margin: 8px 0 0;
+}
